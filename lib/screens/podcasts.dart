@@ -19,15 +19,15 @@ class Podcasts extends StatelessWidget {
         color: Colors.green,
         onPressed: () async {
           print('Podcast card: $index pressed');
-          // if (panelController.isAttached) {
-          //   if (!panelController.isPanelShown) {
-          //     await panelController.show();
-          //   }
-          //   panelController.open();
-          // }
-          context.router.pushWidget(
-            NamedScreen(screenName: 'Player UI'),
-          );
+          if (panelController.isAttached) {
+            if (!panelController.isPanelShown) {
+              await panelController.show();
+            }
+            panelController.open();
+          }
+          // context.router.pushWidget(
+          //   NamedScreen(screenName: 'Player UI'),
+          // );
         },
         child: Text('Podcast Card: $index'),
       ),

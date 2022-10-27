@@ -19,35 +19,33 @@ class StoryDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log(context.router.currentUrl);
-    return AppScaffold(
-      child: NamedScreen(
-        screenName: 'StoryDetailPage:$storyId',
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 100,
-                child: Placeholder(),
+    return NamedScreen(
+      screenName: 'StoryDetailPage:$storyId',
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 100,
+              child: Placeholder(),
+            ),
+            const SizedBox(height: 40),
+            const SizedBox(
+              height: 100,
+              child: Placeholder(),
+            ),
+            const SizedBox(height: 40),
+            const Text('Recommended Stories'),
+            const SizedBox(height: 40),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 5,
+              itemBuilder: (context, index) => StoryFeedListTile(
+                storyId: index,
+                userId: index,
               ),
-              const SizedBox(height: 40),
-              const SizedBox(
-                height: 100,
-                child: Placeholder(),
-              ),
-              const SizedBox(height: 40),
-              const Text('Recommended Stories'),
-              const SizedBox(height: 40),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                itemBuilder: (context, index) => StoryFeedListTile(
-                  storyId: index,
-                  userId: index,
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
